@@ -1,12 +1,14 @@
 package camt.se331.shoppingcart.dao;
 
 import camt.se331.shoppingcart.entity.Product;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 /**
  * Created by CAMT on 2/24/2015.
  */
+@Repository
 public class NewProductDao implements ProductDao {
     private Set<Product> products;
     public NewProductDao(){
