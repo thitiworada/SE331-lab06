@@ -16,8 +16,9 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+    @Autowired
+    ProductDao productDao;
 
-    ProductDao productDao = new NewProductDao();
     @Override
     public List<Product> getProducts() {
         return productDao.getProducts();
