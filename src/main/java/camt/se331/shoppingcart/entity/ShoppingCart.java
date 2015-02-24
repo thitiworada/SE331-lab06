@@ -10,7 +10,11 @@ public class ShoppingCart {
     List<SelectedProduct> selectedProducts;
     Date purchaseDate;
     public double getTotalProductPrice(){
-        return 0.0;
+        double output = 0;
+        for(SelectedProduct selectedProduct: selectedProducts){
+            output += selectedProduct.getTotalPrice();
+        }
+        return output;
     };
 
     public List<SelectedProduct> getSelectedProducts() {

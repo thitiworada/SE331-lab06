@@ -27,19 +27,20 @@ public class ShoppingCartTest {
 
     @Test
     @Parameters(method = "parameterForTestGetTotalProductPrice")
-    public void TestGetTotalProductPrice(List<SelectedProduct> productList, Double expectedResult){
+    public void TestGetTotalProductPrice(List<SelectedProduct> productList, Double expectedResult) {
         ShoppingCart sc = new ShoppingCart(productList);
-        assertThat(sc.getTotalProductPrice(),is(expectedResult));
+        assertThat(sc.getTotalProductPrice(), is(expectedResult));
     }
 
-    public Object[] parameterForTestGetTotalProductPrice(){
-        Product p1 =  new Product(1l,"iphone 6","The worst iphone ever",25000.00);
-        Product p2 = new Product(2l, "Note II","The old",6500.00);
-        Product p3 = new Product (3l, "Chair", "Older chair",250.00 );
+    public Object[] parameterForTestGetTotalProductPrice() {
+        Product p1 = new Product(1l, "iphone 6", "The worst iphone ever", 25000.00);
+        Product p2 = new Product(2l, "Note II", "The old", 6500.00);
+        Product p3 = new Product(3l, "Chair", "Older chair", 250.00);
+
         return $(
-                $(Arrays.asList(new SelectedProduct(p1,0),
-                        new SelectedProduct(p2,0),
-                        new SelectedProduct(p3,0)),0.0),
+                $(Arrays.asList(new SelectedProduct(p1, 0),
+                        new SelectedProduct(p2, 0),
+                        new SelectedProduct(p3, 0)), 0.0),
                 $(Arrays.asList(new SelectedProduct(p1, 1),
                         new SelectedProduct(p2, 1),
                         new SelectedProduct(p3, 1)), 31750.00),
@@ -47,6 +48,30 @@ public class ShoppingCartTest {
                         new SelectedProduct(p2, 3)), 44500.00)
         );
     }
+
+    @Test
+
+    public void TestGetTotalProductPriceUsingMock() {
+        SelectedProduct sp1 = Mockito.mock(SelectedProduct.class);
+        SelectedProduct sp2 = Mockito.mock(SelectedProduct.class);
+        SelectedProduct sp3 = Mockito.mock(SelectedProduct.class);
+        SelectedProduct sp4 = Mockito.mock(SelectedProduct.class);
+        when(sp1.getTotalPrice()).thenReturn(900.00);
+        when(sp2.getTotalPrice()).thenReturn(1900.00);
+        when(sp3.getTotalPrice()).thenReturn(2500.00);
+        when(sp4.getTotalPrice()).thenReturn(0.00);
+        ShoppingCart sc = new ShoppingCart(Arrays.asList(sp1, sp2, sp3, sp4));
+        assertThat(sc.getTotalProductPrice(), is(5300.00));
+
+        verify(sp1,times(1)).getTotalPrice();
+        verify(sp2,times(1)).getTotalPrice();
+        verify(sp3,times(1)).getTotalPrice();
+        verify(sp4,times(1)).getTotalPrice();
+    }
+
+
+
+
 
 
 }
