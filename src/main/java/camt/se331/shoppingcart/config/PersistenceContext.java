@@ -63,6 +63,16 @@ class PersistenceContext {
         EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL).build();
         return db;
     }
+
+    ///6.5
+    @Bean
+    @Profile("datasource.newembedDB")
+    public DataSource newembedDataSource(){
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL).build();
+        return db;
+    }
+
     @Bean
     @Profile("datasource.remoteDB")
     public BoneCPDataSource boneCPDataSource(){
