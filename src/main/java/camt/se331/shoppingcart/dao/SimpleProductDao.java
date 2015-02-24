@@ -17,10 +17,12 @@ public class SimpleProductDao implements  ProductDao{
     private Set<Product> products;
     public SimpleProductDao(){
         Product[] initProduct =  {
-                new Product(1l,"Galaxy Gear","Smartwatch",1000.00),
-                new Product(2l,"iPhone Earpod","For listening music",2000.00),
-                new Product(3l,"HTC PM36100"," MFor calling",2500.00),
-                new Product(4l,"Go Pro","Use for selfie",20000.00)
+                new Product(1l,"Kindle","the good book reader",6900.00),
+                new Product(2l,"Surface Pro","The unknow computer",34000.00),
+                new Product(3l,"Mac pro"," Mac book interim",44000.00),
+                new Product(4l,"Candle","use for lightenup the world",10.00),
+                new Product(5l,"Bin","User for what ?",200.00),
+                new Product(6l,"Telephone", "Call the others",150.00)
         };
         products = new TreeSet<Product>(Arrays.asList(initProduct));
 
