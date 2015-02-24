@@ -26,4 +26,16 @@ public class SelectedProductTest {
         assertThat(sp.getTotalPrice(),is(50000.0));
     }
 
+    @Test
+    public void testGetTotalProductPriceUsingMock(){
+        Product p = mock (Product.class);
+        when(p.getTotalPrice()).thenReturn(1000.0);
+        SelectedProduct sp = new SelectedProduct(p,0);
+        assertThat(sp.getTotalPrice(),is(0.0));
+        when(p.getTotalPrice()).thenReturn(2500.0);
+        sp.setProduct(p);
+        sp.setAmount(10);
+        when(p.getTotalPrice()).thenReturn(25000.0);
+    }
+
 }
