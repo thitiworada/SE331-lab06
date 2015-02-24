@@ -13,6 +13,7 @@ import java.util.Arrays;
  * Created by Dto on 2/11/2015.
  */
 
+@Component
 @Profile("db.init")
 public class DatabaseInitializationBean implements InitializingBean {
     @Autowired
