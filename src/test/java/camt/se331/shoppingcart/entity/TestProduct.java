@@ -34,14 +34,14 @@ public class TestProduct {
 
     @Test
     public void getProduct(){
-        VatEntity.getInstance().setVat(0.1);
-        assertThat(productService.getProduct(1l).getNetPrice(),is(900.00));
-        VatEntity.getInstance().setVat(0.05);
-        assertThat(productService.getProduct(2l).getNetPrice(),is(1900.00));
-        VatEntity.getInstance().setVat(0);
-        assertThat(productService.getProduct(3l).getNetPrice(),is(2500.00));
-        VatEntity.getInstance().setVat(1);
-        assertThat(productService.getProduct(4l).getNetPrice(),is(0.0));
+        VatEntity.getInstance().setVat(0.07);
+        assertThat(productService.getProduct(1l).getNetPrice(),is(929.9999999999999));
+        VatEntity.getInstance().setVat(0.07);
+        assertThat(productService.getProduct(2l).getNetPrice(),is(1859.9999999999998));
+        VatEntity.getInstance().setVat(0.07);
+        assertThat(productService.getProduct(3l).getNetPrice(),is(2325.00));
+        VatEntity.getInstance().setVat(0.07);
+        assertThat(productService.getProduct(4l).getNetPrice(),is(18600.0));
     }
 
 
