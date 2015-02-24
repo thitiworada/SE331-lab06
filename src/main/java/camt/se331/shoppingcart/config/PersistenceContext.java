@@ -37,7 +37,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement(proxyTargetClass = true)
 @EnableJpaRepositories("camt.se331.shoppingcart.repository")
-@PropertySources(value={@PropertySource("classpath:/applicationRemoteDb.properties")})
+@PropertySources(value={@PropertySource("classpath:/${activeDBSetup}")})
 
 class PersistenceContext {
     private static final String[] ENTITY_PACKAGES = {
